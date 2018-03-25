@@ -12,4 +12,10 @@ router.get("/", function (req, res) {
   });
 });
 
+router.post("/api/burgers", function (req, res) {
+  burger.insert(req.body, function (result) {
+    res.send("Inserted");
+  });
+});
+
 module.exports = router;
