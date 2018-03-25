@@ -12,14 +12,6 @@ router.get("/", function (req, res) {
   });
 });
 
-router.get("/:id", function (req, res) {
-  connection.query("SELECT * FROM quotes WHERE id = ?",[req.params.id], function (err, data) {
-    if(err) res.status(500).end();
-    console.log(data);
-    res.render("update-burger", data[0]);
-  });
-});
-
 router.post("/api/burgers", function (req, res) {
   burger.insert(req.body, function (result) {
     res.send("Inserted");
