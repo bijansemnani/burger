@@ -16,4 +16,19 @@ $(document).ready(function () {
     });
   });
 
+  $(".change-devoured").on("click", function (event) {
+    event.preventDefault();
+    var id = $(this).data("id");
+    var newBurger = {
+      devoured: 1
+    };
+    $.ajax("/api/burgers/"+id, {
+      type: "PUT",
+      data: newBurger
+    }).then(function () {
+      console.log("burger updated");
+      location.assign("/");
+    });
+  });
+
 });
