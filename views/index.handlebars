@@ -1,9 +1,5 @@
 
-<ul>
-  {{#each burgers}}
-    {{> burgers/burgers-block}}
-  {{/each}}
-</ul>
+<h1 class="title">THE BURGER APP</h1>
 
 <form class="create-form">
 
@@ -14,3 +10,29 @@
 
   <button type="submit" id="submit">Add Burger</button>
 </form>
+<div>
+  <h2 class="title">Devoured</h2>
+  {{#each burgers}}
+     {{#if devoured}}
+      <div class="devoured" data-id="{{id}}" data-devoured="{{devoured}}">
+        {{burger_name}}
+      </div>
+      <br>
+    {{/if}}
+  {{/each}}
+</div>
+
+<div>
+  <h2 class="title">Burgers to Eat</h2>
+  {{#each burgers}}
+    {{#unless devoured}}
+      <div class="eat">
+        {{burger_name}}
+        <button class="change-devoured" data-id="{{id}}" data-devoured="{{devoured}}">
+          Devour it!
+        </button>
+        <br>
+      </div>
+    {{/unless}}
+  {{/each}}
+</div>
